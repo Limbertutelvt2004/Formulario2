@@ -1,0 +1,83 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Formulario Ampliado</title>  
+</head>  
+<body>  
+    <h1>Registro de Usuario</h1>  
+    <!--  mostrar datos al enviar -->  
+    <form id="miFormulario" onsubmit="mostrarDatos(event)">  
+        <label for="nombre">Nombre Completo:</label>  
+        <input type="text" id="nombre" name="nombre" required><br><br>  
+
+        <label for="email">Correo Electrónico:</label>  
+        <input type="email" id="email" name="email" required><br><br>  
+
+        <label for="telefono">Número de Teléfono:</label>  
+        <input type="tel" id="telefono" name="telefono" required><br><br>  
+
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>  
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br><br>  
+
+        <label for="direccion">Dirección:</label><br>  
+        <textarea id="direccion" name="direccion" rows="3" cols="30" required></textarea><br><br>  
+
+        <label for="contraseña">Contraseña:</label>  
+        <input type="password" id="contraseña" name="contraseña" required><br><br>  
+
+        <p>Preferencias de Contacto:</p>  
+        <input type="checkbox" id="news" name="news" value="si">  
+        <label for="news">Recibir boletín informativo</label><br>  
+
+        <input type="checkbox" id="updates" name="updates" value="si">  
+        <label for="updates">Recibir actualizaciones de productos</label><br><br>  
+
+        <label for="comentarios">Comentarios:</label><br>  
+        <textarea id="comentarios" name="comentarios" rows="4" cols="30"></textarea><br><br>  
+
+        <input type="submit" value="Registrarse">  
+    </form>  
+
+    <!-- Sección para mostrar la información ingresada -->  
+    <div id="resultados">  
+        <h2>Información Ingresada</h2>  
+        <p id="datos"></p>  
+    </div>  
+
+    <script>  
+        // Función que se ejecuta al enviar el formulario  
+        function mostrarDatos(event) {  
+            // Prevenir el envío del formulario para mostrar los datos en la misma página  
+            event.preventDefault();  
+
+            // Obtener valores de los campos del formulario  
+            const nombre = document.getElementById('nombre').value;  
+            const email = document.getElementById('email').value;  
+            const telefono = document.getElementById('telefono').value;  
+            const fechaNacimiento = document.getElementById('fechaNacimiento').value;  
+            const direccion = document.getElementById('direccion').value;  
+            const contraseña = document.getElementById('contraseña').value;  
+            const news = document.getElementById('news').checked ? 'Sí' : 'No';  
+            const updates = document.getElementById('updates').checked ? 'Sí' : 'No';  
+            const comentarios = document.getElementById('comentarios').value;  
+
+            // Crear un texto con los datos ingresados  
+            const datos = `  
+                Nombre: ${nombre}<br>  
+                Correo: ${email}<br>  
+                Teléfono: ${telefono}<br>  
+                Fecha de Nacimiento: ${fechaNacimiento}<br>  
+                Dirección: ${direccion}<br>  
+                Contraseña: ${contraseña}<br>  
+                Recibir boletín: ${news}<br>  
+                Recibir actualizaciones: ${updates}<br>  
+                Comentarios: ${comentarios}  
+            `;  
+            // Mostrar los datos en la sección correspondiente  
+            document.getElementById('datos').innerHTML = datos;  
+            document.getElementById('resultados').style.display = 'block'; // Hacer visible la sección de resultados  
+        }  
+    </script>  
+</body>  
+</html>  
